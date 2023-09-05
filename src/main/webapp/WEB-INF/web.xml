@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Test</display-name>
+
+	<!-- ex01 / 이전 앞 페이지이동 단축키 alt+방향키 -->
+	<servlet>
+		<servlet-name>UrlMappingEx01</servlet-name> <!-- class 이름이랑 동일하게 -->
+		<servlet-class>com.test.lesson01.UrlMappingEx01</servlet-class> <!-- 클래스 주소 + 클래스 이름 > ctrl 누르고 검증하기 -->
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UrlMappingEx01</servlet-name>
+		<url-pattern>/lesson01/ex01</url-pattern>
+	</servlet-mapping>
+	
+	<!-- quiz01 -->
+	<servlet>
+		<servlet-name>UrlMappingQuiz01</servlet-name>
+		<servlet-class>com.test.lesson01.UrlMappingQuiz01</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UrlMappingQuiz01</servlet-name>
+		<url-pattern>/lesson01/quiz01</url-pattern>
+	</servlet-mapping>
+	
+	<!-- quiz02 -->
+	<servlet>
+		<servlet-name>UrlMappinQuiz02</servlet-name>
+		<servlet-class>com.test.lesson01.UrlMappinQuiz02</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UrlMappinQuiz02</servlet-name>
+		<url-pattern>/lesson01/quiz02</url-pattern>
+	</servlet-mapping>
+	
+	<!-- filter 추가 -->
+	<!-- <filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.test.filter.CharacterEncodingFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+</web-app>
