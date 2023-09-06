@@ -18,8 +18,7 @@
 	for (int i = 0; i <= 10; i++) {
 		sum += i;
 	}
-	
-	List<String> list = list.of("a", "b", "c");
+
 %>
 <%-- <%= %> : expression 일부분만 자바코드로 사용할 경우 사용 --%>
 <b>합계 :</b>
