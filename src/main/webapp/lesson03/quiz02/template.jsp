@@ -23,160 +23,22 @@ a, a:hover{text-decoration:none;}
 </style>
 </head>
 <body>
-<%
-// 아티스트 정보 
-
-    Map<String, Object> artistInfo = new HashMap<>();
-    artistInfo.put("name", "아이유");
-    artistInfo.put("debute", 2008);
-    artistInfo.put("agency", "EDAM엔터테인먼트");
-    artistInfo.put("photo", "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG");
-
-
-// 아이유 노래 리스트 
-    List<Map<String, Object>> musicList = new ArrayList<>();
-
-    Map<String, Object> musicInfo = new HashMap<>();
-    musicInfo.put("id", 1);
-    musicInfo.put("title", "팔레트");
-    musicInfo.put("album", "Palette");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://upload.wikimedia.org/wikipedia/ko/b/b6/IU_Palette_final.jpg");
-    musicInfo.put("time", 217);
-    musicInfo.put("composer", "아이유");
-    musicInfo.put("lyricist", "아이유");
-    musicList.add(musicInfo);
-
-    musicInfo = new HashMap<>();
-    musicInfo.put("id", 2);
-    musicInfo.put("title", "좋은날");
-    musicInfo.put("album", "Real");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://upload.wikimedia.org/wikipedia/ko/3/3c/IU_-_Real.jpg");
-    musicInfo.put("time", 233);
-    musicInfo.put("composer", "이민수");
-    musicInfo.put("lyricist", "김이나");
-    musicList.add(musicInfo);
-
-    musicInfo = new HashMap<>();
-    musicInfo.put("id", 3);
-    musicInfo.put("title", "밤편지");
-    musicInfo.put("album", "palette");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://upload.wikimedia.org/wikipedia/ko/b/b6/IU_Palette_final.jpg");
-    musicInfo.put("time", 253);
-    musicInfo.put("composer", "제휘,김희원");
-    musicInfo.put("lyricist", "아이유");
-    musicList.add(musicInfo);
-
-    musicInfo = new HashMap<>();
-    musicInfo.put("id", 4);
-    musicInfo.put("title", "삐삐");
-    musicInfo.put("album", "삐삐");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/111/535/81111535_1539157728291_1_600x600.JPG");
-    musicInfo.put("time", 194);
-    musicInfo.put("composer", "이종훈");
-    musicInfo.put("lyricist", "아이유");
-    musicList.add(musicInfo);
-
-    musicInfo = new HashMap<>();
-    musicInfo.put("id", 5);
-    musicInfo.put("title", "스물셋");
-    musicInfo.put("album", "CHAT-SHIRE");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/724/877/80724877_1445520704274_1_600x600.JPG");
-    musicInfo.put("time", 194);
-    musicInfo.put("composer", "아이유,이종훈,이채규");
-    musicInfo.put("lyricist", "아이유");
-    musicList.add(musicInfo);
-
-    musicInfo = new HashMap<>();
-    musicInfo.put("id", 6);
-    musicInfo.put("title", "Blueming");
-    musicInfo.put("album", "Love poem");
-    musicInfo.put("singer", "아이유");
-    musicInfo.put("thumbnail", "https://upload.wikimedia.org/wikipedia/ko/6/65/%EC%95%84%EC%9D%B4%EC%9C%A0_-_Love_poem.jpg");
-    musicInfo.put("time", 217);
-    musicInfo.put("composer", "아이유,이종훈,이채규");
-    musicInfo.put("lyricist", "아이유");
-    musicList.add(musicInfo);
-%>
 
 	<div id="wrap" class="container">
-		<header class="bg-warning d-flex">
-			<%-- 로고영역 --%>
-			<div class="bg-secondary col-2 d-flex align-items-center">
-				<h2><a href="#" class="text-success">Melong</a></h2>
-			</div>
-			<%-- 검색영역 --%>
-			<div class="bg-danger col-10 d-flex align-items-center">
-				<div class="w-100">
-					<form method="get" action="/lesson03/quiz02/layout2.jsp">
-						<div class="input-group">
-			  				<input type="text" class="form-control col-5" name="title">
-			  				<div class="input-group-append">
-			    				<button class="btn btn-info" type="submit">검색</button>
-			  				</div>
-						</div>
-					</form>	
-				</div>
-			</div>
+		<header class="d-flex">
+			<jsp:include page="header.jsp"></jsp:include>
 		</header>
 		
-		<nav class="bg-success">
-			<ul class="nav">
-				<li class="nav-item"><a href="#" class="nav-link text-dark"><b>멜롱차트</b></a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark"><b>최신음악</b></a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark"><b>장르음악</b></a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark"><b>멜롱DJ</b></a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark"><b>뮤직어워드</b></a></li>
-			</ul>
+		<nav>
+			<jsp:include page="menu.jsp"></jsp:include>
 		</nav>
-		
+			
 		<section class="contents">
-		<%-- 아티스트 정보 영역 --%>
-			<div class="d-flex mt-4 border border-success p-3">
-				<%-- 이미지 --%>
-				<div>
-					<img src="<%=artistInfo.get("photo") %>" alt="표지" width="150">
-				</div>
-				<%-- 가수 정보 --%>
-				<div class="ml-3">
-					<h3><b><%=artistInfo.get("name") %></b></h3>
-					<div><%=artistInfo.get("agency") %></div>
-					<div><%=artistInfo.get("debute") %> 데뷔</div>
-				</div>
-			</div>
-			<%-- 곡 목록 영역 --%>
-			<div class="bg-success mt-3">
-				<h4 class="font-weight-bold">곡 목록</h4>
-				<table class="table text-center">
-					<tr>
-						<th>No.</th>
-						<th>제목</th>
-						<th>앨범</th>
-					</tr>
-					<%
-						
-						for(Map<String, Object> music : musicList){
-					
-					%>
-					<tr>
-						<td><%= music.get("id") %></td>
-						<td><a href="/lesson03/quiz02/layout2.jsp?title=<%= music.get("title") %>"><%= music.get("title") %></a></td>
-						<td><%= music.get("album") %></td>
-					</tr>
-					
-					<%
-						}
-					%>
-				</table>
-			</div>
+			<jsp:include page="listContent.jsp"></jsp:include>
 		</section>
-		<footer class="bg-warning">
-			<hr>
-			<span class="text-secondary">Copyright © marondal 2021</span>
+		
+		<footer>
+			<jsp:include page="footer.jsp"></jsp:include>
 		</footer>
 	</div>
 </body>
