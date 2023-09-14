@@ -2,6 +2,7 @@ package com.test.lesson04;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +24,7 @@ public class quiz01 extends HttpServlet{
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
 		
-		// 인서트
+		// DB 인서트
 		String insertQuery = "insert into `real_estate`"
 				+ "(`realtorId`, `address`, `area`, `type`, `price`)"
 				+ "values"
@@ -36,7 +37,21 @@ public class quiz01 extends HttpServlet{
 		
 		// 출력
 		PrintWriter out = response.getWriter();
-		String query = "select `address`, `area`, `type` from `real_estate`"
-				+ "order by `area` DESC limit 10";
+		String selectQuery = "select `address`, `area`, `type` from `real_estate`"
+				+ "order by `id` DESC limit 10";
+		try {
+			ResultSet res = ms.select(selectQuery);
+			while (res.next()) {
+				String address = res.getString("address");
+				int area = res.getInt("area");
+				String type = res.getString("type");
+				out.println("매물주소:" + address + ", 면적:" + area + ", 타입:" + type);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// DB 연결 해제
+		ms.disconnect();
 	}
 }
