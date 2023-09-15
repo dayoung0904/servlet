@@ -22,7 +22,7 @@
 	ms.connect();
 	
 	// DB select
-	String selectQuery = "select * from `bookmark`";
+	String selectQuery = "select * from `bookmark` order by `id` desc";
 	ResultSet res = ms.select(selectQuery);
 %>
 	<div class="container">
@@ -31,16 +31,17 @@
 					<tr>
 						<th>사이트</th>
 						<th>사이트주소</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
 				<%
-				while (res.next()) {
-					
+					while (res.next()) {	
 				%>
 					<tr>
 						<td><%= res.getString("name") %></td>
-						<td><a href="<%= res.getString("url") %>"><%= res.getString("url") %></a></td>				
+						<td><a href="<%= res.getString("url") %>" target="_blank"><%= res.getString("url") %></a></td>	
+						<td><a href="/lesson04/quiz02/delete-bookmark?id=<%= res.getInt("id") %>" class="btn btn-danger">삭제</a></td>			
 					</tr>
 				<%
 					}

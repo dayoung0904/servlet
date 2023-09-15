@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.common.MysqlService;
 
 @WebServlet("/lesson04/input-bookmark")
-public class InputBookmark extends HttpServlet{
+public class InputBookmarkServlet extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -35,7 +35,7 @@ public class InputBookmark extends HttpServlet{
 		// DB 연결 해제
 		ms.disconnect();
 				
-		// redirect -> 유저목록 화면 이동
+		// redirect -> 북마크 목록 화면 이동
 		response.sendRedirect("/lesson04/quiz02/bookmark.jsp");
 	}
 }
